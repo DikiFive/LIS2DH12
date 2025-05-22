@@ -1,0 +1,27 @@
+dependencies:
+  espressif/cmake_utilities:
+    component_hash: 351350613ceafba240b761b4ea991e0f231ac7a9f59a9ee901f751bddc0bb18f
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 0.5.3
+  espressif/i2c_bus:
+    component_hash: e3dddc78baa172f4768f3973fbecbd6c6c1f2cb23cc6a36cf3132758be092482
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 1.4.0
+  espressif/sensor_hub:
+    component_hash: cdd086c23673c34c6182dfc5b2e9612368a9e3436080934aa11d09c2e8e9e661
+    source:
+      service_url: https://api.components.espressif.com/
+      type: service
+    version: 0.1.2
+  idf:
+    component_hash: null
+    source:
+      type: idf
+    version: 4.4.8
+manifest_hash: 61eca45afe7392c5e843f39d59bf5d9cdf0543f8244db7ec99e727ed910156d3
+target: esp32s3
+version: 1.0.0

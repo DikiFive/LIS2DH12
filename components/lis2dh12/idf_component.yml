@@ -1,0 +1,26 @@
+# ESP-IDF 组件清单文件
+
+# 组件依赖项
+dependencies:
+  cmake_utilities: 0.* # 依赖 cmake_utilities 组件，版本为 0.* (任何 0.x.x 版本)
+  i2c_bus:             # 依赖 i2c_bus 组件
+    public: true       # 表示 i2c_bus 是公共依赖，其头文件和库会传递给依赖此组件的项目
+  idf: '>=4.4'         # 依赖 ESP-IDF 框架，版本要求大于等于 4.4
+  sensor_hub:          # 依赖 sensor_hub 组件
+    public: true       # 表示 sensor_hub 是公共依赖
+# 组件描述
+description: LIS2DH12 IMU 传感器的 I2C 驱动
+# 文档链接
+documentation: https://docs.espressif.com/projects/esp-iot-solution/en/latest/sensors/imu.html
+# 问题跟踪链接
+issues: https://github.com/espressif/esp-iot-solution/issues
+# 源代码仓库链接
+repository: git://github.com/espressif/esp-iot-solution.git
+# 仓库信息
+repository_info:
+  commit_sha: 350117fb02941f9d0f3a2ccde53f8da108d2ee8a # 当前组件对应的 Git 提交 SHA
+  path: components/sensors/imu/lis2dh12                 # 组件在仓库中的路径
+# 组件 URL
+url: https://github.com/espressif/esp-iot-solution/tree/master/components/sensors/imu/lis2dh12
+# 组件版本
+version: 0.2.0
