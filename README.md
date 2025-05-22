@@ -1,49 +1,53 @@
-# I2C Simple Example
+# LIS2DH12 加速度计和温度传感器示例
 
-(See the README.md file in the upper level 'examples' directory for more information about examples.)
+(有关示例的更多信息，请参阅上层“examples”目录中的 README.md 文件。)
 
-## Overview
+## 概述
 
-This example demonstrates basic usage of I2C driver by reading and writing from a I2C connected sensor:
+此示例演示了如何使用 I2C 驱动程序从 LIS2DH12 加速度传感器读取三轴加速度和温度数据，并计算设备的静态姿态角度（俯仰角和横滚角）。
 
-If you have a new I2C application to go (for example, read the temperature data from external sensor with I2C interface), try this as a basic template, then add your own code.
+如果您需要开发基于 I2C 接口的加速度计或温度传感器应用，此示例可作为基本模板。
 
-## How to use example
+## 如何使用示例
 
-### Hardware Required
+### 所需硬件
 
-To run this example, you should have one ESP32, ESP32-S or ESP32-C based development board as well as a MPU9250. MPU9250 is a inertial measurement unit, which contains a accelerometer, gyroscope as well as a magnetometer, for more information about it, you can read the [PDF](https://invensense.tdk.com/wp-content/uploads/2015/02/PS-MPU-9250A-01-v1.1.pdf) of this sensor.
+要运行此示例，您需要一块基于 ESP32、ESP32-S 或 ESP32-C 的开发板，以及一个 LIS2DH12 加速度传感器。
 
-#### Pin Assignment:
+#### 引脚分配：
 
-**Note:** The following pin assignments are used by default, you can change these in the `menuconfig` .
+**注意：** 以下引脚分配为默认使用，您可以在 `menuconfig` 中更改它们。
 
 |                  | SDA             | SCL           |
 | ---------------- | -------------- | -------------- |
 | ESP I2C Master   | I2C_MASTER_SDA | I2C_MASTER_SCL |
-| MPU9250 Sensor   | SDA            | SCL            |
+| LIS2DH12 Sensor  | SDA            | SCL            |
 
+有关 `I2C_MASTER_SDA` 和 `I2C_MASTER_SCL` 的实际默认值，请参阅 `menuconfig` 中的 `Example Configuration`。
 
-For the actual default value of `I2C_MASTER_SDA` and `I2C_MASTER_SCL` see `Example Configuration` in `menuconfig`.
+**注意：** SDA/SCL 引脚无需添加外部上拉电阻，因为驱动程序将启用内部上拉电阻。
 
-**Note: ** There’s no need to add an external pull-up resistors for SDA/SCL pin, because the driver will enable the internal pull-up resistors.
+### 构建和烧录
 
-### Build and Flash
+输入 `idf.py -p PORT flash monitor` 来构建、烧录和监控项目。
 
-Enter `idf.py -p PORT flash monitor` to build, flash and monitor the project.
+（要退出串口监控，请键入 `Ctrl-]`。）
 
-(To exit the serial monitor, type ``Ctrl-]``.)
+有关配置和使用 ESP-IDF 构建项目的完整步骤，请参阅 [入门指南](https://docs.espressif.com/projects/esp-idf/en/latest/get-started/index.html)。
 
-See the [Getting Started Guide](https://docs.espressif.com/projects/esp-idf/en/latest/get-started/index.html) for full steps to configure and use ESP-IDF to build projects.
-
-## Example Output
+## 示例输出
 
 ```bash
-I (328) i2c-simple-example: I2C initialized successfully
-I (338) i2c-simple-example: WHO_AM_I = 71
-I (338) i2c-simple-example: I2C unitialized successfully
+LIS2DH12 实时数据读取示例
+
+Device ID: 0x33
+
+Temperature: 25.00 degC (Raw: 0, 0x0000)
+Acceleration: X=0.05 g, Y=0.00 g, Z=0.43 g
+Pitch: 0.00 deg, Roll: 0.00 deg
+
+Temperature: 25.00 degC (Raw: 0, 0x0000)
+Acceleration: X=0.05 g, Y=0.00 g, Z=0.43 g
+Pitch: 0.00 deg, Roll: 0.00 deg
+...
 ```
-
-## Troubleshooting
-
-(For any technical queries, please open an [issue](https://github.com/espressif/esp-idf/issues) on GitHub. We will get back to you as soon as possible.)
